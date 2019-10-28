@@ -28,12 +28,13 @@ RUN apt-get update && \
 RUN pip3 install meson
 WORKDIR /
 COPY setup.sh /
-
+COPY install.sh /
+RUN chmod +x install.sh
 RUN git clone https://github.com/open5gs/open5gs
 #ADD https://api.github.com/repos/open5gs/open5gs/git/refs/heads/master /open5gs-ver.json
 RUN cd open5gs && meson build && ninja -C build install
 
-COPY freeDiameter /etc/open5gs/freeDiameter
-COPY open5gs.conf /etc/open5gs/
-COPY run_epc.sh /etc/open5gs/
-COPY run_webui.sh /etc/open5gs/
+#COPY freeDiameter /etc/open5gs/freeDiameter
+#COPY open5gs.conf /etc/open5gs/
+#COPY run_epc.sh /etc/open5gs/
+#COPY run_webui.sh /etc/open5gs/
