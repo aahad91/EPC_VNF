@@ -6,7 +6,18 @@ services:
     hostname: mongodb
     ports:
       - "27017:27017"
-#  mongo-gui:
+  mongo-gui:
+    build: webui
+    image: aahad91/epc-webui
+    container_name: "webui"
+    depends_on:
+      - mongodb
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_URI = mongodb://mongodb/open5gs
+    entrypoint:
+      - "/bin/bash"
   epc:
     build: base
     image: aahad91/epc-base
