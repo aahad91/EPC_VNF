@@ -9,8 +9,6 @@ services:
     networks:
       epc-network:
         ipv4_address: 192.168.24.10
-    #environment:
-    #    - DB_URI = mongodb://localhost/open5gs
   mongo-gui:
     build: webui
     image: aahad91/epc-webui
@@ -23,6 +21,7 @@ services:
       - DB_URI = mongodb://mongodb:27017/open5gs
     entrypoint:
       - "/bin/bash"
+      - "./start.sh"
     tty: true
     networks:
       epc-network:
@@ -41,11 +40,9 @@ services:
       - DB_URI = mongodb://mongodb:27017/open5gs
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
-#    command: /bin/bash -c" chmod 666 /dev/net/tun \ /setup.sh \ /install.sh || exit 0"
     entrypoint:
       - "/bin/bash"
-      #- "/install.sh"
-    #command: /bin/bash -c "/root/install.sh"
+      - "./install.sh"
     tty: true
     networks:
       epc-network:
