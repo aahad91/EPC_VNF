@@ -6,6 +6,11 @@ services:
     hostname: mongodb
     ports:
       - "27017:27017"
+    networks:
+      epc-network:
+        ipv4_address: 192.168.24.10
+    #environment:
+    #    - DB_URI = mongodb://localhost/open5gs
   mongo-gui:
     build: webui
     image: aahad91/epc-webui
@@ -15,9 +20,13 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DB_URI = mongodb://mongodb/open5gs
+      - DB_URI = mongodb://mongodb:27017/open5gs
     entrypoint:
       - "/bin/bash"
+    tty: true
+    networks:
+      epc-network:
+        ipv4_address: 192.168.24.30
   epc:
     build: base
     image: aahad91/epc-base
@@ -29,10 +38,23 @@ services:
     devices:
       - /dev/net/tun
     environment:
-      - DB_URI = mongodb://mongodb/open5gs
+      - DB_URI = mongodb://mongodb:27017/open5gs
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
 #    command: /bin/bash -c" chmod 666 /dev/net/tun \ /setup.sh \ /install.sh || exit 0"
     entrypoint:
       - "/bin/bash"
-      - "/install.sh"
+      #- "/install.sh"
+    #command: /bin/bash -c "/root/install.sh"
+    tty: true
+    networks:
+      epc-network:
+        ipv4_address: 192.168.24.20
+
+networks:
+  epc-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.24.0/24
