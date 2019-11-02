@@ -1,17 +1,14 @@
 FROM ubuntu:18.04
 MAINTAINER aahad91
 
-RUN apt-get update && apt-get install -y curl npm
-RUN set -e; \
-    cd /usr/src; \
-    rm -rf ./open5gs; \
-    curl -SLO "https://github.com/open5gs/open5gs/archive/v1.0.0.tar.gz"; \
-    tar -xvf v1.0.0.tar.gz; \
-    mv ./open5gs-1.0.0/ ./open5gs;
-
-WORKDIR /usr/src/open5gs/webui
+RUN apt-get update && apt-get install -y curl npm git
+RUN git clone https://github.com/open5gs/open5gs
+WORKDIR /open5gs/webui
+COPY index.js /server/
 RUN npm install && \
     npm build
-CMD npm run start
+CMD npm run dev
 
 EXPOSE 3000
+#username: admin
+#password: 1423
