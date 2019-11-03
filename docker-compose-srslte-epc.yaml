@@ -27,7 +27,7 @@ services:
       epc-network:
         ipv4_address: 192.168.24.30
   epc:
-    build: base
+    build: base1
     image: aahad91/epc-base
     depends_on:
       - mongodb
