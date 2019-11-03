@@ -48,7 +48,37 @@ services:
       epc-network:
         ipv4_address: 192.168.24.20
   enb:
+    build: srsLTE
+    image: aahad91/epc-enb
+    container_name: enb
+    depends_on:
+      - epc
+    ipc: shareable
+    cap_add:
+      - SYS_NICE
+    entrypoint:
+      - "/bin/bash"
+      - "./run_enb.sh"
+    tty: true
+    networks:
+      epc-network:
+        ipv4_address: 192.168.24.20
   ue:
+    build: srsLTE
+    image: aahad91/epc-ue
+    container_name: ue
+    depends_on:
+      - enb
+    ipc: "container:enb"
+    cap_add:
+      - SYS_NICE
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    network_mode: "none"
+    entrypoint:
+      - "/bin/bash"
+      - "./run_ue.sh"
 
 networks:
   epc-network:
