@@ -62,23 +62,24 @@ services:
     tty: true
     networks:
       epc-network:
-        ipv4_address: 192.168.24.20
-  ue:
-    build: srsLTE
-    image: aahad91/epc-ue
-    container_name: ue
-    depends_on:
-      - enb
-    ipc: "container:enb"
-    cap_add:
-      - SYS_NICE
-      - NET_ADMIN
-    devices:
-      - /dev/net/tun
-    network_mode: "none"
-    entrypoint:
-      - "/bin/bash"
-      - "./run_ue.sh"
+        ipv4_address: 192.168.24.40
+#  ue:
+#    build: srsLTE
+#    image: aahad91/epc-ue
+#    container_name: ue
+#    depends_on:
+#      - enb
+#    ipc: "container:enb"
+#    cap_add:
+#      - SYS_NICE
+#      - NET_ADMIN
+#    devices:
+#      - /dev/net/tun
+#    network_mode: "none"
+#    tty: true
+#    entrypoint:
+#      - "/bin/bash"
+#      - "./run_ue.sh"
 
 networks:
   epc-network:
