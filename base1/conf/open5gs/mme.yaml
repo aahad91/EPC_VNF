@@ -6,9 +6,9 @@ parameter:
 mme:
     freeDiameter: /etc/freeDiameter/mme.conf
     s1ap:
-    #  addr: 192.168.24.20
+      addr: 192.168.24.20
     gtpc:
-  #    addr: 192.168.24.20
+      addr: 192.168.24.20
     gummei:
       plmn_id:
         mcc: 001
