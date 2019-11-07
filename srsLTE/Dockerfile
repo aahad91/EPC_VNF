@@ -44,7 +44,7 @@ RUN cp /root/srsLTE/srsenb/sib.conf.example /config/sib.conf
 RUN cp /root/srsLTE/srsenb/sib.conf.mbsfn.example /config/sib.mbsfn.conf
 
 # UE specific files
-RUN cp /root/srsLTE/srsue/ue.conf.fauxrf.example /config/ue.conf.fauxrf
+COPY ue.conf.fauxrf /config/ue.conf.fauxrf
 
 # patch to prevent overriding OPC/OP
 RUN sed -i s,"opc  = 63BFA50EE6523365FF14C1F45F88737D","#opc  = 63BFA50EE6523365FF14C1F45F88737D",g /config/ue.conf.fauxrf

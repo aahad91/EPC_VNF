@@ -32,3 +32,5 @@ RUN chmod +x install.sh
 RUN git clone https://github.com/open5gs/open5gs
 RUN cd open5gs && meson build && ninja -C build install
 COPY conf/open5gs /etc/open5gs
+ENV TZ=Europe/Berlin
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
