@@ -63,6 +63,8 @@ services:
     networks:
       epc-network:
         ipv4_address: 192.168.24.20
+      test-network:
+        ipv4_address: 192.168.30.20
   enb:
     build: srsLTE
     image: aahad91/epc-enb
@@ -96,7 +98,16 @@ services:
     entrypoint:
       - "/bin/bash"
       - "./run_ue.sh"
-
+  test-server:
+    build: iperfSRV
+    image: aahad91/iperfsrv
+    container_name: test-server
+    depends_on:
+      - ue
+    tty: true
+    networks:
+      test-network:
+        ipv4_address: 192.168.30.10
 networks:
   epc-network:
     driver: bridge
@@ -104,3 +115,9 @@ networks:
       driver: default
       config:
         - subnet: 192.168.24.0/24
+  test-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.30.0/24

@@ -21,6 +21,7 @@ RUN apt-get update && \
         libyaml-dev \
         iproute2 \
         iptables \
+        iputils-ping \
         ca-certificates \
         netbase \
         pkg-config && \
