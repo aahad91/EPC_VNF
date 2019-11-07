@@ -29,7 +29,8 @@ services:
   imsi-loader:
     image: mongo:latest
     container_name: "imsi-loader"
-    depends_on: mongo-gui
+    depends_on:
+      - mongo-gui
     volumes:
       - "./mongodb/run_db.sh:/tmp/run_db.sh"
       - "./mongodb/imsi1.json:/tmp/imsi1.json"
@@ -44,6 +45,7 @@ services:
     image: aahad91/epc-base
     depends_on:
       - mongodb
+      - mongo-gui
     hostname: epc
     cap_add:
       - NET_ADMIN

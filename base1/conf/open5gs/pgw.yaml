@@ -7,6 +7,7 @@ pgw:
     freeDiameter: /etc/freeDiameter/pgw.conf
     gtpc:
       - addr: 127.0.0.3
+      - addr: 192.168.24.20
       - addr: ::1
     gtpu:
       - addr: 127.0.0.3

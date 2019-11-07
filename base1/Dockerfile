@@ -20,6 +20,7 @@ RUN apt-get update && \
         libbson-dev \
         libyaml-dev \
         iproute2 \
+        iptables \
         ca-certificates \
         netbase \
         pkg-config && \
