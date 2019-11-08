@@ -21,7 +21,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     iproute2 \
     net-tools \
     iperf \
-    iperf3
+    iperf3 \
+    traceroute
 
 WORKDIR /root
 
@@ -56,5 +57,9 @@ COPY run_enb.sh /root
 RUN chmod +x run_enb.sh
 COPY run_ue.sh /root
 RUN chmod +x run_ue.sh
+COPY ip_rule.sh /root
+RUN chmod +x ip_rule.sh
+COPY start_ue.sh /root
+RUN chmod +x start_ue.sh
 
 ENTRYPOINT [ "stdbuf", "-o", "L" ]

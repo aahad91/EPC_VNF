@@ -3,4 +3,5 @@ MAINTAINER aahad91
 
 RUN apt-get update && apt-get install -y iperf iperf3 iproute2 net-tools iputils-ping
 
-CMD ["iperf", "-s"] 
+COPY start_iperf.sh /
+RUN chmod +x start_iperf.sh

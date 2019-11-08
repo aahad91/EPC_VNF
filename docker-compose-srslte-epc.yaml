@@ -97,7 +97,10 @@ services:
     tty: true
     entrypoint:
       - "/bin/bash"
-      - "./run_ue.sh"
+      - "./start_ue.sh"
+    networks:
+      dummy-network:
+        ipv4_address: 192.168.50.10
   test-server:
     build: iperfSRV
     image: aahad91/iperfsrv
@@ -105,6 +108,11 @@ services:
     depends_on:
       - ue
     tty: true
+    cap_add:
+      - NET_ADMIN
+    entrypoint:
+      - "/bin/bash"
+      - "./start_iperf.sh"
     networks:
       test-network:
         ipv4_address: 192.168.30.10
@@ -121,3 +129,9 @@ networks:
       driver: default
       config:
         - subnet: 192.168.30.0/24
+  dummy-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.50.0/24
