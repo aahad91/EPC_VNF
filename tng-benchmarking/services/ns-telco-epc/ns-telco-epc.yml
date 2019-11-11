@@ -1,0 +1,37 @@
+descriptor_schema: >-
+  https://raw.githubusercontent.com/sonata-nfv/tng-schema/master/service-descriptor/nsd-schema.yml
+vendor: de.upb
+name: ns-telco-epc
+version: '0.1'
+author: Abdul Ahad
+description: Testing service for benchmarking, containing a 5 VNF
+network_functions:
+  - vnf_id:
+    vnf_vendor: de.upb
+    vnf_name:
+    vnf_version: '0.1'
+connection_points:
+  - id:
+    interface:
+      type:
+virtual_links:
+  - id:
+    connectivity_type:
+    connection_points_reference:
+      -
+      -
+forwarding_graphs:
+  - fg_id:
+    number_of_endpoints:
+      number_of_virtual_links:
+        constituent_virtual_links:
+          -
+          -
+        constituent_vnfs:
+          -
+        network_forwarding_paths:
+          - fg_id:
+            policy:
+            connection_points:
+              - connection_point_ref:
+                position:

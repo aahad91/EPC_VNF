@@ -1,0 +1,37 @@
+descriptor_schema: >-
+  https://raw.githubusercontent.com/sonata-nfv/tng-schema/master/function-descriptor/vnfd-schema.yml
+vendor: de.upb
+name: telco-epc
+version: '0.1'
+author: Abdul Ahad
+description: A telco based VNF aahad91/epc
+virtual_deployment_units:
+  - id: vdu01
+    vm_image: aahad91/
+    vm_image_format: docker
+    resource_requirements:
+      cpu:
+        vcpu: 1
+      memory:
+        size: 1
+        size_unit: GB
+      storage:
+        size: 10
+        size_unit: GB
+      connection_points:
+        - id:
+          interface:
+          type:
+          port:
+          publish:
+connection_points:
+  - id:
+    interface:
+    type:
+    address:
+virtual_links:
+  - id:
+    connectivity_type:
+    connection_points_reference:
+      -
+      - 

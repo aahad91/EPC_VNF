@@ -1,0 +1,57 @@
+---
+# PED documentation: https://github.com/sonata-nfv/tng-sdk-benchmark/wiki/PED
+#
+# This is an example for a profiling experiment descriptor (PED) that
+# defines a profiling (benchmarking) experiment for a Suricata VNF
+# that is stimulated by traffic traces replayed with TCP replay.
+#
+# The tested network service (NSD, VNFDs) can be found in 'nw-services/'.
+#
+descriptor_version: 0.2
+vendor: "de.upb"
+name: "telco-epc"
+version: "1.0"
+author: "Abdul Ahad, UPB, ahad@mail.uni-paderborn.de"
+description: "Telco VNF benchmarking - EPC"
+
+
+service_package: "../services/ns-telco-epc"
+
+
+service_experiments:
+  - name: " "
+    description: "Telco VNF benchmarking - EPC"
+    repetitions:
+    time_limit:
+
+    target:
+      vendor: "de.upb"
+      name: " "
+      version: "0.1"
+
+    measurement_points:
+      - name: "mp.input"
+        connection_point:
+        container: " "
+        address: " "
+      - name: "mp.output"
+        connection_point:
+        container: " "
+        address: " "
+    experiment_parameters:
+      - function: " "
+        cmd_start:
+        cmd_stop:
+        cpu_bw:
+        cpu_cores:
+        mem_max:
+        mem_swap_max:
+        io_bw:
+      - function: " "
+        cmd_start:
+        cmd_stop:
+        cpu_bw:
+        cpu_cores:
+        mem_max:
+        mem_swap_max:
+        io_bw:
