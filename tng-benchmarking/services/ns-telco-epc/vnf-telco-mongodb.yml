@@ -7,7 +7,7 @@ author: Abdul Ahad
 description: A telco based VNF aahad91/epc
 virtual_deployment_units:
   - id: vdu01
-    vm_image: mongo:latest
+    vm_image: aahad91/test-vnf
     vm_image_format: docker
     resource_requirements:
       cpu:
@@ -22,11 +22,17 @@ virtual_deployment_units:
         - id: mgmt
           interface: ipv4
           type: management
+        - id: net1
+          interface: ipv4
+          type: internal
           address: "192.168.24.10"
 connection_points:
   - id: mgmt
     interface: ipv4
-    type:management
+    type: management
+  - id: net1
+    interface: ipv4
+    type: internal
     address: "192.168.24.10"
 virtual_links:
   - id: mgmt
@@ -34,4 +40,10 @@ virtual_links:
     connection_points_reference:
       - "vdu01:mgmt"
       - mgmt
+    dhcp: true
+  - id: net1
+    connectivity_type: E-Line
+    connection_points_reference:
+      - "vdu01:net1"
+      - net1
     dhcp: true

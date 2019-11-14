@@ -30,11 +30,14 @@ connection_points:
   - id: "ns:mgmt"
     interface: ipv4
     type: management
-  - id: "ns:data"
+  - id: "ns:net1"
     interface: ipv4
-    type: data
+    type: internal
+  - id: "ns:net2"
+    interface: ipv4
+    type: external
 virtual_links:
-  - id: mgmt-elam
+  - id: mgmt-elan
     connectivity_type: E-LAN
     connection_points_reference:
       - "vnf0:mgmt"
@@ -43,17 +46,27 @@ virtual_links:
       - "vnf3:mgmt"
       - "vnf4:mgmt"
       - "ns:mgmt"
-  - id: data-elan
+  - id: net1-elan
     connectivity_type: E-LAN
     connection_points_reference:
-      - "vnf2:data"
-      - "vnf4:data"
-      - "ns:data"
+      - "vnf0:net1"
+      - "vnf1:net1"
+      - "vnf2:net1"
+      - "vnf3:net1"
+      - "ns:net1"
+  - id: net2-elan
+    connectivity_type: E-LAN
+    connection_points_reference:
+      - "vnf2:net2"
+      - "vnf4:net2"
+      - "ns:net2"
 forwarding_graphs:
   - fg_id: fg01
     number_of_endpoints: 0
-      number_of_virtual_links: 0
-        constituent_virtual_links: []
-        constituent_vnfs: []
-        network_forwarding_paths: []
-            connection_points: []
+    number_of_virtual_links: 0
+    constituent_virtual_links: []
+    constituent_vnfs: []
+    network_forwarding_paths:
+      - fp_id: 'fg01:fp01'
+        policy: none
+        connection_points: []
