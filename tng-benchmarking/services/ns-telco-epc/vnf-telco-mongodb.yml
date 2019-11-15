@@ -11,21 +11,21 @@ virtual_deployment_units:
     vm_image_format: docker
     resource_requirements:
       cpu:
-        vcpu: 1
+        vcpus: 1
       memory:
         size: 1
         size_unit: GB
       storage:
         size: 4
         size_unit: GB
-      connection_points:
-        - id: mgmt
-          interface: ipv4
-          type: management
-        - id: net1
-          interface: ipv4
-          type: internal
-          address: "192.168.24.10"
+    connection_points:
+      - id: mgmt
+        interface: ipv4
+        type: management
+      - id: net1
+        interface: ipv4
+        type: internal
+        address: "192.168.24.10/24"
 connection_points:
   - id: mgmt
     interface: ipv4
@@ -33,7 +33,7 @@ connection_points:
   - id: net1
     interface: ipv4
     type: internal
-    address: "192.168.24.10"
+    address: "192.168.24.10/24"
 virtual_links:
   - id: mgmt
     connectivity_type: E-LAN
