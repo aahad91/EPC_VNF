@@ -27,13 +27,13 @@ network_functions:
     vnf_name: telco-testserver
     vnf_version: '0.1'
 connection_points:
-  - id: "ns:mgmt"
+  - id: "mgmt"  # FIX: attention prefix ns: only in references to these CPs! Not in definition of the CPs.
     interface: ipv4
     type: management
-  - id: "ns:net1"
+  - id: "net1"
     interface: ipv4
     type: internal
-  - id: "ns:net2"
+  - id: "net2"
     interface: ipv4
     type: external
 virtual_links:
