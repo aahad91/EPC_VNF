@@ -23,17 +23,19 @@ service_experiments:
     description: "Telco VNF benchmarking - EPC"
     repetitions: 1
     time_limit: 60
-
+    time_warmup: 120
     target:
       vendor: "de.upb"
       name: "ns-telco-epc"
       version: "0.1"
 
-    measurement_points: []
-#      - name: "mp.input"
-#        connection_point:
-#        container: " "
-#        address: " "
+    measurement_points:
+      - name: "mp.input"
+        connection_point: null
+        container: "aahad91/epc-ue"
+        address: "192.168.50.10"
+        ipc_mode: "container:mn.vnf2.vdu01.0"
+        devices: ["/dev/net/tun"]
 #      - name: "mp.output"
 #        connection_point:
 #        container: " "
@@ -48,7 +50,7 @@ service_experiments:
         mem_swap_max: null
         io_bw: null
       - function: "de.upb.telco-imsiloader.0.1"
-        cmd_start: ["echo 1"]
+        cmd_start: "./run_db.sh"
         cmd_stop: ["echo 1"]
         cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
         cpu_cores: ["0"]
@@ -56,7 +58,7 @@ service_experiments:
         mem_swap_max: null
         io_bw: null
       - function: "de.upb.telco-epc.0.1"
-        cmd_start: ["echo 1"]
+        cmd_start: "./install.sh"
         cmd_stop: ["echo 1"]
         cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
         cpu_cores: ["0"]
@@ -64,7 +66,7 @@ service_experiments:
         mem_swap_max: null
         io_bw: null
       - function: "de.upb.telco-enb.0.1"
-        cmd_start: ["echo 1"]
+        cmd_start: "./run_enb.sh"
         cmd_stop: ["echo 1"]
         cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
         cpu_cores: ["0"]
@@ -72,7 +74,15 @@ service_experiments:
         mem_swap_max: null
         io_bw: null
       - function: "de.upb.telco-testserver.0.1"
-        cmd_start: ["echo 1"]
+        cmd_start: "./start_iperf.sh"
+        cmd_stop: ["echo 1"]
+        cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
+        cpu_cores: ["0"]
+        mem_max: [1024]
+        mem_swap_max: null
+        io_bw: null
+      - function: "mp.input"
+        cmd_start: [" "]
         cmd_stop: ["echo 1"]
         cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
         cpu_cores: ["0"]
