@@ -26,7 +26,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
 
 WORKDIR /root
 
-RUN git clone https://github.com/jgiovatto/srsLTE.git && cd srsLTE && git checkout faux_rf
+RUN git clone https://github.com/aahad91/srsLTE.git && cd srsLTE && git checkout faux_rf
 RUN mkdir -p /root/srsLTE/build
 WORKDIR /root/srsLTE/build
 RUN cmake ../
@@ -37,7 +37,8 @@ WORKDIR /root
 RUN mkdir /config
 
 # eNB specific files
-RUN cp /root/srsLTE/srsenb/enb.conf.fauxrf.example /config/enb.conf.fauxrf
+COPY enb.conf.fauxrf /config/enb.conf.fauxrf
+#RUN cp /root/srsLTE/srsenb/enb.conf.fauxrf.example /config/enb.conf.fauxrf
 RUN cp /root/srsLTE/srsenb/drb.conf.example /config/drb.conf
 RUN cp /root/srsLTE/srsenb/enb.conf.example /config/enb.conf
 RUN cp /root/srsLTE/srsenb/rr.conf.example /config/rr.conf
@@ -53,14 +54,18 @@ RUN sed -i s,"opc  = 63BFA50EE6523365FF14C1F45F88737D","#opc  = 63BFA50EE6523365
 ENV TZ=Europe/Berlin
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-COPY run_enb.sh /root
-RUN chmod +x run_enb.sh
+COPY start_enb.sh /root
+RUN chmod +x start_enb.sh
+COPY stop_enb.sh /root
+RUN chmod +x stop_enb.sh
 COPY run_ue.sh /root
 RUN chmod +x run_ue.sh
 COPY ip_rule.sh /root
 RUN chmod +x ip_rule.sh
 COPY start_ue.sh /root
 RUN chmod +x start_ue.sh
+COPY stop_ue.sh /root
+RUN chmod +x stop_ue.sh
 
 ENTRYPOINT [ "stdbuf", "-o", "L" ]
 CMD /bin/bash

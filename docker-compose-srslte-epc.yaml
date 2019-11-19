@@ -18,7 +18,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DB_URI=mongodb://mongodb:27017/open5gs
+      DB_URI: mongodb://mongodb:27017/open5gs
     entrypoint:
       - "/bin/bash"
       - "./start.sh"
@@ -27,16 +27,14 @@ services:
       epc-network:
         ipv4_address: 192.168.24.30
   imsi-loader:
-    image: mongo:latest
+    build: mongodb
+    image: aahad91/mongodbloader
     container_name: "imsi-loader"
     depends_on:
       - mongo-gui
-    volumes:
-      - "./mongodb/run_db.sh:/tmp/run_db.sh"
-      - "./mongodb/imsi1.json:/tmp/imsi1.json"
     entrypoint:
       - "/bin/sh"
-      - "/tmp/run_db.sh"
+      - "./start.sh"
     networks:
       epc-network:
         ipv4_address: 192.168.24.50
@@ -52,13 +50,13 @@ services:
     devices:
       - /dev/net/tun
     environment:
-      - DB_URI=mongodb://mongodb:27017/open5gs
+      DB_URI: mongodb://mongodb:27017/open5gs
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
       - net.ipv4.conf.all.forwarding=1
     entrypoint:
       - "/bin/bash"
-      - "./install.sh"
+      - "./start.sh"
     tty: true
     networks:
       epc-network:
@@ -76,7 +74,7 @@ services:
       - SYS_NICE
     entrypoint:
       - "/bin/bash"
-      - "./run_enb.sh"
+      - "./start_enb.sh"
     tty: true
     networks:
       epc-network:
@@ -112,7 +110,7 @@ services:
       - NET_ADMIN
     entrypoint:
       - "/bin/bash"
-      - "./start_iperf.sh"
+      - "./start.sh"
     networks:
       test-network:
         ipv4_address: 192.168.30.10

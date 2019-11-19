@@ -6,6 +6,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         python3-pip \
         python3-setuptools \
+        python3-wheel \
         ninja-build \
         build-essential \
         flex \
@@ -29,9 +30,11 @@ RUN apt-get update && \
 RUN pip3 install meson
 WORKDIR /
 COPY setup.sh /
-COPY install.sh /
-RUN chmod +x install.sh
-RUN git clone https://github.com/open5gs/open5gs
+COPY start.sh /
+RUN chmod +x start.sh
+COPY stop.sh /
+RUN chmod +x stop.sh
+RUN git clone https://github.com/aahad91/open5gs
 RUN cd open5gs && meson build && ninja -C build install
 COPY conf/open5gs /etc/open5gs
 ENV TZ=Europe/Berlin
