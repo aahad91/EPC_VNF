@@ -12,3 +12,11 @@ before_install:
 
 script:
   - docker-compose -f docker-compose-srslte-epc.yaml build
+
+after_script:
+  - echo "$DOC_PASS" | docker login -u "$DOC_USER" --password-stdin
+  - docker push aahad91/epc-base
+  - docker push aahad91/epc-enb
+  - docker push aahad91/epc-ue
+  - docker push aahad91/iperfsrv
+  - docker push aahad91/epc-webui
