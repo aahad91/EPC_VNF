@@ -5,3 +5,5 @@ RUN apt-get update && apt-get install -y iperf iperf3 iproute2 net-tools iputils
 
 COPY start_iperf.sh /
 RUN chmod +x start_iperf.sh
+
+CMD /bin/bash

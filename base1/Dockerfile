@@ -36,3 +36,4 @@ RUN cd open5gs && meson build && ninja -C build install
 COPY conf/open5gs /etc/open5gs
 ENV TZ=Europe/Berlin
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+CMD /bin/bash

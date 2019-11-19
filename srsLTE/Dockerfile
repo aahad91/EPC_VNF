@@ -63,3 +63,4 @@ COPY start_ue.sh /root
 RUN chmod +x start_ue.sh
 
 ENTRYPOINT [ "stdbuf", "-o", "L" ]
+CMD /bin/bash
