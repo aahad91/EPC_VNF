@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/aahad91/EPC_VNF.svg?branch=master)](https://travis-ci.com/aahad91/EPC_VNF)
 # EPC_VNF
 PG-Backflip candidate VNF (Telecommunication)
 
