@@ -29,6 +29,7 @@ RUN apt-get update && \
     apt-get clean
 RUN pip3 install meson
 WORKDIR /
+RUN mkdir /tngbench_share
 COPY setup.sh /
 COPY start.sh /
 RUN chmod +x start.sh
