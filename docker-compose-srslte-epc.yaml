@@ -90,7 +90,7 @@ services:
       - SYS_NICE
       - NET_ADMIN
     devices:
-      - /dev/net/tun
+      - /dev/net/tun:/dev/net/tun
     #network_mode: "none"
     tty: true
     entrypoint:
