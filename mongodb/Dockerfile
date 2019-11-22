@@ -13,5 +13,5 @@ COPY start.sh /
 RUN chmod +x start.sh
 COPY stop.sh /
 RUN chmod +x stop.sh
-
+RUN mkdir /tngbench_share
 CMD /bin/bash

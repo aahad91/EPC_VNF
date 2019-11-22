@@ -24,6 +24,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     iperf3 \
     traceroute
 
+RUN mkdir /tngbench_share
 WORKDIR /root
 
 RUN git clone https://github.com/aahad91/srsLTE.git && cd srsLTE && git checkout faux_rf
@@ -66,6 +67,5 @@ COPY start_ue.sh /root
 RUN chmod +x start_ue.sh
 COPY stop_ue.sh /root
 RUN chmod +x stop_ue.sh
-RUN mkdir /root/tngbench_share
 ENTRYPOINT [ "stdbuf", "-o", "L" ]
 CMD /bin/bash
