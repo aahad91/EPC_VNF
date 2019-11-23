@@ -22,6 +22,8 @@ virtual_deployment_units:
       - id: mgmt
         interface: ipv4
         type: management
+        port: 27017
+        publish: {27017:27017}
       - id: net1
         interface: ipv4
         type: internal

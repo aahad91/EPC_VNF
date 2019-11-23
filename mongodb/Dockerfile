@@ -9,9 +9,15 @@ RUN apt-get update && apt-get install -y \
     iputils-ping
 WORKDIR /
 COPY imsi1.json /
+COPY loadimsi.sh /
+RUN chmod +x loadimsi.sh
+COPY startdb.sh /
+RUN chmod +x startdb.sh
 COPY start.sh /
 RUN chmod +x start.sh
 COPY stop.sh /
 RUN chmod +x stop.sh
 RUN mkdir /tngbench_share
+RUN mkdir -p /data/db
+EXPOSE 27017
 CMD /bin/bash
