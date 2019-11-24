@@ -9,14 +9,8 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
-
-before_script:
-  #- docker-compose -f docker-compose-srslte-epc.yaml up -d --build
-  #- "travis_wait 1 sleep 60 &"
-  #- docker exec -it ue iperf -c 192.168.30.10
 script:
-  - - docker-compose -f docker-compose-srslte-epc.yaml build
-#  - docker exec -it ue iperf -c 192.168.30.10
+  - docker-compose -f docker-compose-srslte-epc.yaml up -d --build
 after_script:
 #  - "travis_wait 1 sleep 60 &"
   - docker-compose -f docker-compose-srslte-epc.yaml down
