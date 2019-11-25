@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/aahad91/EPC_VNF.svg?branch=tng-benchmarking)](https://travis-ci.com/aahad91/EPC_VNF)
+[![Build Status](https://travis-ci.com/aahad91/EPC_VNF.svg?branch=tng-testing)](https://travis-ci.com/aahad91/EPC_VNF)
 # EPC_VNF
 PG-Backflip candidate VNF (Telecommunication)
 
