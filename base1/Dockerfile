@@ -22,6 +22,7 @@ RUN apt-get update && \
         libyaml-dev \
         iproute2 \
         iptables \
+        net-tools \
         iputils-ping \
         net-tools \
         ca-certificates \

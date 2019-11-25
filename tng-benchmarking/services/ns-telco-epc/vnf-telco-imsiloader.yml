@@ -7,7 +7,7 @@ author: Abdul Ahad
 description: A telco based VNF aahad91/epc
 virtual_deployment_units:
   - id: vdu01
-    vm_image: aahad91/mongodbloader
+    vm_image: aahad91/testimage
     vm_image_format: docker
     resource_requirements:
       cpu:

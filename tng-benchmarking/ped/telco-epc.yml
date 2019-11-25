@@ -32,9 +32,9 @@ service_experiments:
     measurement_points:
       - name: "mp.input"
         connection_point: null
-        container: "aahad91/epc-ue"
+        container: "aahad91/testimage"
         address: "192.168.50.10/24"
-        ipc_mode: "container:mn.vnf2.vdu01.0"
+        ipc_mode: "container:mn.vnf3.vdu01.0"
         devices: ["/dev/net/tun"]
 #      - name: "mp.output"
 #        connection_point:
@@ -66,8 +66,8 @@ service_experiments:
         mem_swap_max: null
         io_bw: null
       - function: "de.upb.telco-enb.0.1"
-        cmd_start: "./start_enb.sh"
-        cmd_stop: "./stop_enb.sh"
+        cmd_start: "./start.sh"
+        cmd_stop: "./stop.sh"
         cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
         cpu_cores: ["0"]
         mem_max: [1024]
@@ -82,8 +82,8 @@ service_experiments:
         mem_swap_max: null
         io_bw: null
       - function: "mp.input"
-        cmd_start: "./start_ue.sh"
-        cmd_stop: "./stop_ue.sh"
+        cmd_start: "./start.sh"
+        cmd_stop: "./stop.sh"
         cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
         cpu_cores: ["0"]
         mem_max: [1024]

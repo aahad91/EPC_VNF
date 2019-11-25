@@ -4,7 +4,7 @@ vendor: de.upb
 name: ns-telco-epc
 version: '0.1'
 author: Abdul Ahad
-description: Testing service for benchmarking, containing a 5 VNF
+description: Testing service for benchmarking containing 4 VNF
 network_functions:
 #  - vnf_id: vnf0
 #    vnf_vendor: de.upb
