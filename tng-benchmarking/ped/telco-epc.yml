@@ -22,8 +22,8 @@ service_experiments:
   - name: "telco-epc-src"
     description: "Telco VNF benchmarking - EPC"
     repetitions: 1
-    time_limit: 120
-    time_warmup: 120
+    time_limit: 240
+    time_warmup: 150
     target:
       vendor: "de.upb"
       name: "ns-telco-epc"

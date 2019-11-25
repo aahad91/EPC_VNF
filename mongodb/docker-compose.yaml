@@ -1,20 +1,20 @@
 version: '3'
 services:
-  mongodb:
-    image: mongo:latest
-    container_name: "mongodb"
-    hostname: mongodb
-    ports:
-      - "27017:27017"
-    networks:
-      epc-network:
-        ipv4_address: 192.168.24.10
+#  mongodb:
+#    image: mongo:latest
+#    container_name: "mongodb"
+#    hostname: mongodb
+#    ports:
+#      - "27017:27017"
+#    networks:
+#      epc-network:
+#        ipv4_address: 192.168.24.10
   imsi-loader:
     build: .
     image: aahad91/mongoloader
     container_name: "imsi-loader"
-    depends_on:
-      - mongodb
+#    depends_on:
+#      - mongodb
     entrypoint:
       - "./start.sh"
     networks:

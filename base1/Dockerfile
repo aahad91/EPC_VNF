@@ -23,6 +23,7 @@ RUN apt-get update && \
         iproute2 \
         iptables \
         iputils-ping \
+        net-tools \
         ca-certificates \
         netbase \
         pkg-config && \
