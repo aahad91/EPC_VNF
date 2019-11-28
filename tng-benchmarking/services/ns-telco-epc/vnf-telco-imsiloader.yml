@@ -26,6 +26,8 @@ virtual_deployment_units:
         interface: ipv4
         type: internal
         address: "192.168.24.50/24"
+        port: 27017
+        publish: {27017: 27017}
 connection_points:
   - id: mgmt
     interface: ipv4
