@@ -245,9 +245,9 @@ enable = false
 #interpolate_subframe_enabled = false
 #sic_pss_enabled     = true
 #pregenerate_signals = false
-metrics_csv_enable  = false
-metrics_period_secs = 1
-metrics_csv_filename = /tmp/ue_metrics.csv
+#metrics_csv_enable  = false
+#metrics_period_secs = 1
+#metrics_csv_filename = /tmp/ue_metrics.csv
 #pdsch_csi_enabled  = true
 #pdsch_8bit_decoder = false
 

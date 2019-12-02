@@ -2,6 +2,6 @@
 date > /tngbench_share/start.txt
 sysctl net.ipv6.conf.all.disable_ipv6=0
 sysctl net.ipv4.conf.all.forwarding=1
-./ip_rule.sh &
+#./ip_rule.sh &
 ./run_ue.sh
 echo "UE VNF started"
