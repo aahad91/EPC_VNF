@@ -34,7 +34,7 @@ service_experiments:
         connection_point: null
         container: "aahad91/epc-ue"
         address: "192.168.50.10/24"
-        ipc_mode: "container:mn.vnf2.vdu01.0"
+        ipc_mode: "container:mn.vnf3.vdu01.0"
         devices: ["/dev/net/tun"]
 #      - name: "mp.output"
 #        connection_point:
