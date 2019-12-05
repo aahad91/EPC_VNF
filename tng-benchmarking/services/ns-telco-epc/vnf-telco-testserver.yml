@@ -9,6 +9,7 @@ virtual_deployment_units:
   - id: vdu01
     vm_image: aahad91/iperfsrv
     vm_image_format: docker
+    cap_add: ["NET_ADMIN"]
     resource_requirements:
       cpu:
         vcpus: 1

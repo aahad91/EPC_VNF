@@ -10,6 +10,7 @@ virtual_deployment_units:
     vm_image: aahad91/epc-base
     vm_image_format: docker
     devices: ["/dev/net/tun"]
+    cap_add: ["NET_ADMIN"]
     resource_requirements:
       cpu:
         vcpus: 1

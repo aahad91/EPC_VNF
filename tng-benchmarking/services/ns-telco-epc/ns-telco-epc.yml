@@ -8,11 +8,11 @@ description: Testing service for benchmarking, containing a 5 VNF
 network_functions:
 #  - vnf_id: vnf0
 #    vnf_vendor: de.upb
-#    vnf_name: telco-mongodb
+#    vnf_name: telco-imsiloader
 #    vnf_version: '0.1'
   - vnf_id: vnf1
     vnf_vendor: de.upb
-    vnf_name: telco-imsiloader
+    vnf_name: telco-mongodb
     vnf_version: '0.1'
   - vnf_id: vnf2
     vnf_vendor: de.upb

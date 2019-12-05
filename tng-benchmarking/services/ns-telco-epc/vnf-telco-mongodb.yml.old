@@ -1,13 +1,13 @@
 descriptor_schema: >-
   https://raw.githubusercontent.com/sonata-nfv/tng-schema/master/function-descriptor/vnfd-schema.yml
 vendor: de.upb
-name: telco-imsiloader
+name: telco-mongodb
 version: '0.1'
 author: Abdul Ahad
 description: A telco based VNF aahad91/epc
 virtual_deployment_units:
   - id: vdu01
-    vm_image: aahad91/mongodbloader
+    vm_image: mongo:latest
     vm_image_format: docker
     resource_requirements:
       cpu:
@@ -22,12 +22,12 @@ virtual_deployment_units:
       - id: mgmt
         interface: ipv4
         type: management
+        port: 27017
+        publish: {27017:27017}
       - id: net1
         interface: ipv4
         type: internal
-        address: "192.168.24.50/24"
-        port: 27017
-        publish: {27017: 27017}
+        address: "192.168.24.10/24"
 connection_points:
   - id: mgmt
     interface: ipv4
@@ -35,7 +35,7 @@ connection_points:
   - id: net1
     interface: ipv4
     type: internal
-    address: "192.168.24.50/24"
+    address: "192.168.24.10/24"
 virtual_links:
   - id: mgmt
     connectivity_type: E-LAN

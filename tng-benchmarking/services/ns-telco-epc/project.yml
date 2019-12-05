@@ -5,14 +5,14 @@ files:
     type: application/vnd.5gtango.nsd
     tags:
     - eu.5gtango
-#  - path: vnf-telco-mongodb.yml
-#    type: application/vnd.5gtango.vnfd
-#    tags:
-#    - eu.5gtango
-  - path: vnf-telco-imsiloader.yml
+  - path: vnf-telco-mongodb.yml
     type: application/vnd.5gtango.vnfd
     tags:
     - eu.5gtango
+#  - path: vnf-telco-imsiloader.yml
+#    type: application/vnd.5gtango.vnfd
+#    tags:
+#    - eu.5gtango
   - path: vnf-telco-enb.yml
     type: application/vnd.5gtango.vnfd
     tags:

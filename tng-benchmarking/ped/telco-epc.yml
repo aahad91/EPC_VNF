@@ -22,8 +22,8 @@ service_experiments:
   - name: "telco-epc-src"
     description: "Telco VNF benchmarking - EPC"
     repetitions: 1
-    time_limit: 240
-    time_warmup: 150
+    time_limit: 300
+    time_warmup: 30
     target:
       vendor: "de.upb"
       name: "ns-telco-epc"
@@ -35,13 +35,14 @@ service_experiments:
         container: "aahad91/epc-ue"
         address: "192.168.50.10/24"
         ipc_mode: "container:mn.vnf3.vdu01.0"
-        devices: ["/dev/net/tun"]
+        devices: ["/dev/net/tun"]     #'devices: can be ignored as all the containers run with --privileged (can access all host devices) '
+        cap_add: ["SYS_NICE", "NET_ADMIN"]
 #      - name: "mp.output"
 #        connection_point:
 #        container: " "
 #        address: " "
     experiment_parameters:
-    #  - function: "de.upb.telco-mongodb.0.1"
+    #  - function: "de.upb.telco-imsiloader.0.1"
     #    cmd_start: ["echo 1"]
     #    cmd_stop: ["echo 1"]
     #    cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
@@ -49,7 +50,7 @@ service_experiments:
     #    mem_max: [1024]
     #    mem_swap_max: null
     #    io_bw: null
-      - function: "de.upb.telco-imsiloader.0.1"
+      - function: "de.upb.telco-mongodb.0.1"
         cmd_start: "./start.sh"
         cmd_stop: "./stop.sh"
         cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
@@ -61,7 +62,7 @@ service_experiments:
         cmd_start: "./start.sh"
         cmd_stop: "./stop.sh"
         cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
-        cpu_cores: ["0"]
+        cpu_cores: ["6, 7"]
         mem_max: [1024]
         mem_swap_max: null
         io_bw: null
@@ -69,7 +70,7 @@ service_experiments:
         cmd_start: "./start_enb.sh"
         cmd_stop: "./stop_enb.sh"
         cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
-        cpu_cores: ["0"]
+        cpu_cores: ["4, 5"]
         mem_max: [1024]
         mem_swap_max: null
         io_bw: null
@@ -77,7 +78,7 @@ service_experiments:
         cmd_start: "./start.sh"
         cmd_stop: "./stop.sh"
         cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
-        cpu_cores: ["0"]
+        cpu_cores: ["1"]
         mem_max: [1024]
         mem_swap_max: null
         io_bw: null
@@ -85,7 +86,7 @@ service_experiments:
         cmd_start: "./start_ue.sh"
         cmd_stop: "./stop_ue.sh"
         cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
-        cpu_cores: ["0"]
-        mem_max: [1024]
+        cpu_cores: ["2, 3"]
+        mem_max: [2048]
         mem_swap_max: null
         io_bw: null

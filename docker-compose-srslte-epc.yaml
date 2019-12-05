@@ -28,7 +28,7 @@ services:
         ipv4_address: 192.168.24.30
   imsi-loader:
     build: mongodb
-    image: aahad91/mongodbloader
+    image: aahad91/mongodb
     container_name: "imsi-loader"
     depends_on:
       - mongo-gui
