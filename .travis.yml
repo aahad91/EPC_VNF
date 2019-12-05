@@ -10,12 +10,8 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
 
-before_script:
-  - docker-compose -f docker-compose-srslte-epc.yaml up -d --build
-  #- "travis_wait 1 sleep 60 &"
-  #- docker exec -it ue iperf -c 192.168.30.10
 script:
-#  - docker exec -it ue iperf -c 192.168.30.10
+  - docker-compose -f docker-compose-srslte-epc.yaml up -d --build
 after_script:
 #  - "travis_wait 1 sleep 60 &"
   - docker-compose -f docker-compose-srslte-epc.yaml down
@@ -25,3 +21,4 @@ after_script:
   - docker push aahad91/epc-ue
   - docker push aahad91/iperfsrv
   - docker push aahad91/epc-webui
+  - docker push aahad91/mongodb
