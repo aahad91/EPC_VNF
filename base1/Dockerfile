@@ -7,6 +7,8 @@ RUN apt-get update && \
         python3-pip \
         python3-setuptools \
         python3-wheel \
+        python-yaml \
+        python \
         ninja-build \
         build-essential \
         flex \
@@ -36,6 +38,7 @@ COPY start.sh /
 RUN chmod +x start.sh
 COPY stop.sh /
 RUN chmod +x stop.sh
+COPY log_intf_statistics.py /
 RUN git clone https://github.com/aahad91/open5gs
 RUN cd open5gs && git checkout EPC_VNF && meson build && ninja -C build install
 COPY conf/open5gs /etc/open5gs

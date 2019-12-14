@@ -7,7 +7,9 @@ RUN apt-get update && apt-get install -y \
     iptables \
     iputils-ping \
     gnupg \
-    wget
+    wget \
+    python \
+    python-yaml
 
 RUN wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | apt-key add -
 RUN echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.2.list
@@ -23,6 +25,7 @@ COPY start.sh /
 RUN chmod +x start.sh
 COPY stop.sh /
 RUN chmod +x stop.sh
+COPY log_intf_statistics.py /
 RUN mkdir /tngbench_share
 RUN mkdir -p /data/db
 EXPOSE 27017

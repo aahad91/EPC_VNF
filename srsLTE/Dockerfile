@@ -67,5 +67,7 @@ COPY start_ue.sh /root
 RUN chmod +x start_ue.sh
 COPY stop_ue.sh /root
 RUN chmod +x stop_ue.sh
+COPY log_intf_statistics.py /root
+COPY process_iperf3_results.py /root
 ENTRYPOINT [ "stdbuf", "-o", "L" ]
 CMD /bin/bash
