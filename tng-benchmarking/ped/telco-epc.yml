@@ -53,7 +53,7 @@ service_experiments:
       - function: "de.upb.telco-mongodb.0.1"
         cmd_start: "./start.sh"
         cmd_stop: "./stop.sh"
-        cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
+        #cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
         cpu_cores: ["0"]
         mem_max: [1024]
         mem_swap_max: null
@@ -69,7 +69,7 @@ service_experiments:
       - function: "de.upb.telco-enb.0.1"
         cmd_start: "./start_enb.sh"
         cmd_stop: "./stop_enb.sh"
-        cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
+        #cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
         cpu_cores: ["4, 5"]
         mem_max: [1024]
         mem_swap_max: null
@@ -77,13 +77,14 @@ service_experiments:
       - function: "de.upb.telco-testserver.0.1"
         cmd_start: "./start.sh"
         cmd_stop: "./stop.sh"
-        cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
+        #cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
         cpu_cores: ["1"]
         mem_max: [1024]
         mem_swap_max: null
         io_bw: null
       - function: "mp.input"
         cmd_start: "./start_ue.sh"
+        # iperf3 -c 192.168.30.10 -w 32M -t 60 -J
         cmd_stop: "./stop_ue.sh"
         cpu_bw: {"min": 0.1, "max": 0.2, "step": 0.1}
         cpu_cores: ["2, 3"]
