@@ -38,16 +38,15 @@ def main():
 
     with open(INPUT, "r") as f:
         RAW = json.load(f)
-        result["iperf_version"] = RAW.get("start").get("version")
         result.update(prefix_dict(
             RAW.get("start").get("test_start"),
-            "iperf_"))
+            "iperf_udp_"))
         result.update(prefix_dict(
             RAW.get("end").get("cpu_utilization_percent"),
-            "iperf_cpu_"))
+            "iperf_udp_cpu_"))
         result.update(prefix_dict(
             RAW.get("end").get("sum"),
-            "iperf_sent_"))
+            "iperf_udp_sent_"))
         result.update(prefix_dict())
 
     update_yml(OUTPUT, result)
