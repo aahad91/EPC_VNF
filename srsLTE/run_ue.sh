@@ -5,7 +5,8 @@ sleep 240
 echo "UE VNF started" >> /tngbench_share/start.txt
 ip r add 192.168.30.0/24 via 45.45.0.2
 echo "ip rule added" >> /tngbench_share/start.txt
-iperf3 -c 192.168.30.10 -w 32M -t 60 -J >> /tngbench_share/iperf.json
+iperf3 -c 192.168.30.10 -l 1M -b 0 -t 60 -J >> /tngbench_share/iperf.json
+iperf3 -c 192.168.30.10 -u -l 63.9K -b 0 -t 60 -J >> /tngbench_share/iperf_udp.json
 echo "iperf executed" >> /tngbench_share/start.txt
 #iperf output format
 #timestamp,source_address,source_port,destination_address,destination_port,interval,transferred_bytes,bits_per_second
