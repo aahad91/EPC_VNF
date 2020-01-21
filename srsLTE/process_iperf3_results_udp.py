@@ -47,8 +47,6 @@ def main():
         result.update(prefix_dict(
             RAW.get("end").get("sum"),
             "iperf_udp_sent_"))
-        result.update(prefix_dict())
-
     update_yml(OUTPUT, result)
     print "done."
 
